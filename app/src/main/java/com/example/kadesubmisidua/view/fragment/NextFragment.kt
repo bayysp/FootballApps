@@ -2,16 +2,20 @@ package com.example.kadesubmisidua.view.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.kadesubmisidua.R
+import com.example.kadesubmisidua.R.array.*
 import com.example.kadesubmisidua.adapter.NextMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.NextItem
@@ -21,6 +25,7 @@ import com.example.kadesubmisidua.view._interface.NextMatchView
 import com.example.kadesubmisidua.view.presenter.NextMatchPresenter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next.*
+import kotlinx.android.synthetic.main.fragment_previous.*
 
 /**
  * A simple [Fragment] subclass.
@@ -61,7 +66,34 @@ class NextFragment : Fragment() , NextMatchView {
 
         nextMatchPresenter.getNextMatchList("eventsnextleague.php","4387")
 
+        val spinnerItems = resources.getStringArray(R.array.league)
+        val idLeague = resources.getStringArray(R.array.id_league)
+        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
+        fragmentnext_sp.adapter = spinnerAdapter
+
+        fragmentnext_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+
+                Log.d("PreviousFragment","get league position: "+position)
+                Log.d("PreviousFragment","get league id: "+idLeague[position])
+                nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague[position].toString())
+            }
+
+        }
+
     }
+
+
+
     override fun showLoading() {
         progressBar.visible()
     }
