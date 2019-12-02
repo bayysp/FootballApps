@@ -13,13 +13,14 @@ class PreviousMatchPresenter(
     private val apiRepository: ApiRepository,
     private val gson: Gson
 ) {
-    fun getPreviousMatchList(typeMatch : String, idLeague : String){
+
+    fun getPreviousMatchList(typeMatch: String, idLeague: String) {
         previousMatchView.showLoading()
 
         doAsync {
             val data = gson.fromJson(
                 apiRepository
-                    .doRequest(SportDBApi.getMatch(typeMatch,idLeague)),
+                    .doRequest(SportDBApi.getMatch(typeMatch, idLeague)),
                 PreviousResponse::class.java
             )
 

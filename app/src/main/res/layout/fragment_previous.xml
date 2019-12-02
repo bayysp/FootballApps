@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.PreviousFragment">
 
-    <TextView
+    <Spinner
+        android:id="@+id/fragmentprevious_sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="previous"/>
+        android:layout_marginBottom="8dp"/>
+
     <ProgressBar
         android:id="@+id/fragmentprevious_pb"
         style="?android:attr/progressBarStyle"
@@ -20,6 +22,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentprevious_rv_previousmatch"
+        android:layout_below="@id/fragmentprevious_sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

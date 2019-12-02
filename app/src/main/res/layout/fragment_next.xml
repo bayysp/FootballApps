@@ -6,10 +6,11 @@
     tools:context=".view.fragment.NextFragment"
     android:orientation="vertical">
 
-    <TextView
+    <Spinner
+        android:id="@+id/fragmentnext_sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="next"/>
+        android:layout_marginBottom="8dp"/>
 
     <ProgressBar
         android:id="@+id/fragmentnext_pb"
@@ -22,6 +23,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentnext_rv_nextmatch"
+        android:layout_below="@id/fragmentnext_sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.model.PreviousItem
+import kotlinx.android.synthetic.main.item_nextmatch.view.*
 import kotlinx.android.synthetic.main.item_previousmatch.*
 import kotlinx.android.synthetic.main.item_previousmatch.view.*
 
@@ -19,6 +20,10 @@ class PreviousMatchAdapter(
         fun bindItem(previousItem: PreviousItem, listener: (PreviousItem) -> Unit) {
             itemView.item_previousmatch_tv_homename.text = previousItem.strHomeTeam
             itemView.item_previousmatch_tv_awayname.text = previousItem.strAwayTeam
+
+            itemView.item_previousmatch_tv_homescore.text = previousItem.intHomeScore
+            itemView.item_previousmatch_tv_awayscore.text = previousItem.intAwayScore
+
             itemView.setOnClickListener { listener(previousItem) }
         }
 
