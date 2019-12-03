@@ -2,6 +2,7 @@ package com.example.kadesubmisidua.view.activity
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -14,6 +15,7 @@ import com.example.kadesubmisidua.view.fragment.NextFragment
 import com.example.kadesubmisidua.view.fragment.PreviousFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -44,6 +46,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return false
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.main_option_search){
+            Log.d("MainActivity", "move into searchactivity");
+            startActivity(Intent(applicationContext,SearchActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.main_menu_next -> {
@@ -62,26 +72,26 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val inflater = menuInflater
         inflater.inflate(R.menu.main_option_menu,menu)
 
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu?.findItem(R.id.main_option_search)?.actionView as androidx.appcompat.widget.SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-        searchView.queryHint = "Cari Pertandingan"
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.d("MainActivity", "onQuerySubmit val : " + query);
-
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("MainActivity", "onQueryChange val : " + newText);
-
-                return true
-            }
-
-        })
+//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+//        val searchView = menu?.findItem(R.id.main_option_search)?.actionView as androidx.appcompat.widget.SearchView
+//
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+//
+//        searchView.queryHint = "Cari Pertandingan"
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                Log.d("MainActivity", "onQuerySubmit val : " + query);
+//
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                Log.d("MainActivity", "onQueryChange val : " + newText);
+//
+//                return true
+//            }
+//
+//        })
 
         return true
     }
