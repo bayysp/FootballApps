@@ -24,8 +24,12 @@ class SearchPresenter(
             )
 
             uiThread {
-                searchView.hideLoading()
-                searchView.showSearchMatch(data.event)
+                if (data.event != null){
+                    searchView.hideLoading()
+                    searchView.showSearchMatch(data.event)
+                }else{
+                    searchView.showLoading()
+                }
             }
         }
     }

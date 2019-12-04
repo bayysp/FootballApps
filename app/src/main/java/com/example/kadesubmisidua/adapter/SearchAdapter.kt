@@ -9,26 +9,31 @@ import com.example.kadesubmisidua.model.SearchItem
 import kotlinx.android.synthetic.main.item_nextmatch.view.*
 
 class SearchAdapter(
-    val searchMatch : MutableList<SearchItem>,
-    val listener : (SearchItem) -> Unit
-) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
+    val searchMatch: MutableList<SearchItem>,
+    val listener: (SearchItem) -> Unit
+) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItem(searchItem: SearchItem, listener: (SearchItem) -> Unit){
-            if (searchItem.intAwayScore != null && searchItem.intHomeScore != null){
-                itemView.item_nextmatch_tv_homescore.text = searchItem.intHomeScore.toString()
-                itemView.item_nextmatch_tv_awayscore.text = searchItem.intAwayScore.toString()
+        fun bindItem(searchItem: SearchItem, listener: (SearchItem) -> Unit) {
+
+            if (searchMatch.size != 0) {
+                if (searchItem.intAwayScore != null && searchItem.intHomeScore != null) {
+                    itemView.item_nextmatch_tv_homescore.text = searchItem.intHomeScore.toString()
+                    itemView.item_nextmatch_tv_awayscore.text = searchItem.intAwayScore.toString()
+                }
+                itemView.item_nextmatch_tv_homename.text = searchItem.strHomeTeam
+                itemView.item_nextmatch_tv_awayname.text = searchItem.strAwayTeam
             }
-            itemView.item_nextmatch_tv_homename.text = searchItem.strHomeTeam
-            itemView.item_nextmatch_tv_awayname.text = searchItem.strAwayTeam
 
         }
 
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nextmatch,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_nextmatch, parent, false)
         return ViewHolder(view)
     }
 
@@ -37,6 +42,6 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
-        holder.bindItem(searchMatch[position],listener)
+        holder.bindItem(searchMatch[position], listener)
     }
 }

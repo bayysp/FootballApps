@@ -1,6 +1,7 @@
 package com.example.kadesubmisidua.view.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import com.example.kadesubmisidua.model.NextItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.NextMatchView
+import com.example.kadesubmisidua.view.activity.DetailActivity
 import com.example.kadesubmisidua.view.presenter.NextMatchPresenter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next.*
@@ -38,6 +40,7 @@ class NextFragment : Fragment() , NextMatchView {
 
     private lateinit var progressBar : ProgressBar
     private lateinit var rvNextMatch : RecyclerView
+    private lateinit var items : NextItem
 
 
     override fun onCreateView(
@@ -58,7 +61,9 @@ class NextFragment : Fragment() , NextMatchView {
         nextMatchPresenter = NextMatchPresenter(this,request,gson)
 
         nextMatchAdapter = NextMatchAdapter(nextMatchItem){
-            Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
+            val intent = Intent(context,DetailActivity::class.java)
+            intent.putExtra("id_event",it.idEvent)
+            startActivity(intent)
         }
 
         fragmentnext_rv_nextmatch.layoutManager = LinearLayoutManager(context)
