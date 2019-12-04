@@ -7,5 +7,4 @@
     <!--detail activity background color-->
     <color name="startBlue">#2196F3</color>
     <color name="endBlue">#FFFFFF</color>
-    <color name="grayLight">#D3D3D3</color>
 </resources>

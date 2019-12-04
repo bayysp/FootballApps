@@ -11,12 +11,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.R.array.*
 import com.example.kadesubmisidua.adapter.NextMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.NextItem
@@ -27,7 +25,6 @@ import com.example.kadesubmisidua.view.activity.DetailActivity
 import com.example.kadesubmisidua.view.presenter.NextMatchPresenter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next.*
-import kotlinx.android.synthetic.main.fragment_previous.*
 
 /**
  * A simple [Fragment] subclass.

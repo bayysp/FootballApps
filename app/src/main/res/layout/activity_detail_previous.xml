@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.DetailPreviousActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/background_detail">
+
+        <LinearLayout
+            android:id="@+id/activitydetailprevious_ll_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitydetailprevious_tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/activitydetail_cv_info"
+                android:layout_marginTop="12dp"
+                android:text="Detail Match"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="italic|bold" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/activitydetailprevious_cv_info"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_margin="16dp"
+                android:background="#ffffff"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/activitydetailprevious_iv_homethumb"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/red" />
+
+                        <TextView
+                            android:id="@+id/activitydetailprevious_tv_homename"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_weight="5"
+                            android:text="Home"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/activitydetailprevious_tv_homescore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="48sp"
+                        android:text="-"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="VS"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="4dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/activitydetailprevious_tv_awayscore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="48sp"
+                        android:text="-"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/activitydetailprevious_iv_awaythumb"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/blue" />
+
+                        <TextView
+                            android:id="@+id/activitydetailprevious_tv_awayname"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:layout_weight="5"
+                            android:text="Home"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activitydetailprevious_tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activitydetailprevious_ll_info"
+            android:gravity="center"
+            android:text="Minggu, 10 November 2019"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activitydetailprevious_tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activitydetail_tv_date"
+            android:gravity="center"
+            android:text="14:00"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,25 +1,23 @@
 package com.example.kadesubmisidua.view.activity
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.NextItem
 import com.example.kadesubmisidua.view._interface.DetailView
 import com.example.kadesubmisidua.view.presenter.DetailPresenter
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail_previous.*
 
-class DetailActivity : AppCompatActivity(), DetailView {
+class DetailPreviousActivity : AppCompatActivity(), DetailView {
 
-    private lateinit var nextItem : NextItem
-    private lateinit var detailPresenter : DetailPresenter
-
+    private lateinit var detailPresenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        setContentView(R.layout.activity_detail_previous)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -28,10 +26,9 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
         val request = ApiRepository()
         val gson = Gson()
-        detailPresenter = DetailPresenter(this,request,gson)
+        detailPresenter = DetailPresenter(this, request, gson)
 
-        detailPresenter.getDetailMatch("lookupevent.php",item)
-
+        detailPresenter.getDetailMatch("lookupevent.php", item)
     }
 
     override fun showLoading() {
@@ -43,10 +40,12 @@ class DetailActivity : AppCompatActivity(), DetailView {
     }
 
     override fun showDetailMatch(data: ArrayList<NextItem>) {
-        activitydetail_tv_date.text = data.first().dateEvent
-        activitydetail_tv_time.text = data.first().strTime
-        activitydetail_tv_homename.text = data.first().strHomeTeam
-        activitydetail_tv_awayname.text = data.first().strAwayTeam
+        activitydetailprevious_tv_date.text = data.first().dateEvent
+        activitydetailprevious_tv_time.text = data.first().strTime
+        activitydetailprevious_tv_homename.text = data.first().strHomeTeam
+        activitydetailprevious_tv_awayname.text = data.first().strAwayTeam
+        activitydetailprevious_tv_homescore.text = data.first().intHomeScore.toString()
+        activitydetailprevious_tv_awayscore.text = data.first().intAwayScore.toString()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

@@ -1,5 +1,6 @@
 package com.example.kadesubmisidua.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,23 +9,22 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
+import com.example.kadesubmisidua.R.array.id_league
+import com.example.kadesubmisidua.R.array.league
 import com.example.kadesubmisidua.adapter.PreviousMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.PreviousItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.PreviousMatchView
+import com.example.kadesubmisidua.view.activity.DetailPreviousActivity
 import com.example.kadesubmisidua.view.presenter.PreviousMatchPresenter
-import com.example.kadesubmisidua.R.array.league
-import com.example.kadesubmisidua.R.array.id_league
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_previous.*
-import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 
 class PreviousFragment : Fragment(), PreviousMatchView {
 
@@ -58,7 +58,9 @@ class PreviousFragment : Fragment(), PreviousMatchView {
         previousMatchPresenter = PreviousMatchPresenter(this,request,gson)
 
         previousMatchAdapter = PreviousMatchAdapter(previousMatchItem){
-            Toast.makeText(context,"Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, DetailPreviousActivity::class.java)
+            intent.putExtra("id_event",it.idEvent)
+            startActivity(intent)
         }
 
         fragmentprevious_rv_previousmatch.layoutManager = LinearLayoutManager(context)
