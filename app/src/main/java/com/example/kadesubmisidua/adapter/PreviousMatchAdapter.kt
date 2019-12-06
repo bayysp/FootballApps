@@ -5,9 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.model.PreviousItem
-import kotlinx.android.synthetic.main.item_nextmatch.view.*
-import kotlinx.android.synthetic.main.item_previousmatch.*
+import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 import kotlinx.android.synthetic.main.item_previousmatch.view.*
 
 class PreviousMatchAdapter(

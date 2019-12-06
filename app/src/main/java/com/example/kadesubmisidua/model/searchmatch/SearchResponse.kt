@@ -1,4 +1,4 @@
-package com.example.kadesubmisidua.model
+package com.example.kadesubmisidua.model.searchmatch
 
 import com.google.gson.annotations.SerializedName
 

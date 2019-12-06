@@ -1,9 +1,8 @@
-package com.example.kadesubmisidua.model
+package com.example.kadesubmisidua.model.nextmatch
 
 import com.google.gson.annotations.SerializedName
 
-
-data class SearchItem(
+data class NextItem(
 
 	@field:SerializedName("intHomeShots")
 	val intHomeShots: Any? = null,
@@ -63,7 +62,7 @@ data class SearchItem(
 	val idHomeTeam: String? = null,
 
 	@field:SerializedName("intHomeScore")
-	val intHomeScore: Any? = null,
+	val intHomeScore: String? = null,
 
 	@field:SerializedName("dateEvent")
 	val dateEvent: String? = null,
@@ -102,7 +101,7 @@ data class SearchItem(
 	val strDescriptionEN: Any? = null,
 
 	@field:SerializedName("dateEventLocal")
-	val dateEventLocal: Any? = null,
+	val dateEventLocal: String? = null,
 
 	@field:SerializedName("strResult")
 	val strResult: Any? = null,
@@ -126,7 +125,7 @@ data class SearchItem(
 	val strAwayLineupForward: Any? = null,
 
 	@field:SerializedName("strTimeLocal")
-	val strTimeLocal: Any? = null,
+	val strTimeLocal: String? = null,
 
 	@field:SerializedName("strLocked")
 	val strLocked: String? = null,
@@ -171,7 +170,7 @@ data class SearchItem(
 	val strLeague: String? = null,
 
 	@field:SerializedName("intAwayScore")
-	val intAwayScore: Any? = null,
+	val intAwayScore: String? = null,
 
 	@field:SerializedName("strCity")
 	val strCity: Any? = null,

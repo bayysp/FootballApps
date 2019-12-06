@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.SearchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
-import com.example.kadesubmisidua.model.SearchItem
+import com.example.kadesubmisidua.model.searchmatch.SearchItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view.presenter.SearchPresenter

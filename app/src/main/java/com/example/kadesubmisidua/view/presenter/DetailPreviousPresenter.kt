@@ -3,14 +3,15 @@ package com.example.kadesubmisidua.view.presenter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.api.SportDBApi
 import com.example.kadesubmisidua.model.nextmatch.NextResponse
+import com.example.kadesubmisidua.model.previousmatch.PreviousResponse
 import com.example.kadesubmisidua.model.team.TeamsResponse
-import com.example.kadesubmisidua.view._interface.DetailView
+import com.example.kadesubmisidua.view._interface.DetailPreviousView
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class DetailPresenter(
-    private val detailView: DetailView,
+class DetailPreviousPresenter (
+    private val detailView: DetailPreviousView,
     private val apiRepository: ApiRepository,
     private val gson: Gson
 ) {
@@ -22,7 +23,7 @@ class DetailPresenter(
             val data = gson.fromJson(
                 apiRepository
                     .doRequest(SportDBApi.getMatch(typeMatch,idEvent)),
-                NextResponse::class.java
+                PreviousResponse::class.java
             )
 
             uiThread {

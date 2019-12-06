@@ -2,7 +2,7 @@ package com.example.kadesubmisidua.view.presenter
 
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.api.SportDBApi
-import com.example.kadesubmisidua.model.SearchResponse
+import com.example.kadesubmisidua.model.searchmatch.SearchResponse
 import com.example.kadesubmisidua.view._interface.SearchView
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync

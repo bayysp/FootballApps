@@ -1,6 +1,6 @@
 package com.example.kadesubmisidua.view._interface
 
-import com.example.kadesubmisidua.model.SearchItem
+import com.example.kadesubmisidua.model.searchmatch.SearchItem
 
 interface SearchView {
     fun showLoading()

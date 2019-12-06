@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.model.SearchItem
+import com.example.kadesubmisidua.model.searchmatch.SearchItem
 import kotlinx.android.synthetic.main.item_nextmatch.view.*
 
 class SearchAdapter(
@@ -17,7 +17,8 @@ class SearchAdapter(
 
         fun bindItem(searchItem: SearchItem, listener: (SearchItem) -> Unit) {
 
-            if (searchMatch.size != 0) {
+            if (searchMatch.size != 0 && searchItem.strSport == "Soccer") {
+
                 if (searchItem.intAwayScore != null && searchItem.intHomeScore != null) {
                     itemView.item_nextmatch_tv_homescore.text = searchItem.intHomeScore.toString()
                     itemView.item_nextmatch_tv_awayscore.text = searchItem.intAwayScore.toString()

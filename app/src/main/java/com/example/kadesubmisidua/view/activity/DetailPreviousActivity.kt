@@ -5,15 +5,24 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.api.ApiRepository
-import com.example.kadesubmisidua.model.NextItem
+import com.example.kadesubmisidua.model.nextmatch.NextItem
+import com.example.kadesubmisidua.model.previousmatch.PreviousItem
+import com.example.kadesubmisidua.model.team.TeamsItem
+import com.example.kadesubmisidua.view._interface.DetailPreviousView
 import com.example.kadesubmisidua.view._interface.DetailView
 import com.example.kadesubmisidua.view.presenter.DetailPresenter
+import com.example.kadesubmisidua.view.presenter.DetailPreviousPresenter
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_previous.*
+import kotlinx.android.synthetic.main.item_nextmatch.*
 
-class DetailPreviousActivity : AppCompatActivity(), DetailView {
+class DetailPreviousActivity : AppCompatActivity(), DetailPreviousView {
 
-    private lateinit var detailPresenter: DetailPresenter
+    private lateinit var detailPreviousPresenter: DetailPreviousPresenter
+
+    private var idTeamHome: String? = ""
+    private var idTeamAway: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +35,10 @@ class DetailPreviousActivity : AppCompatActivity(), DetailView {
 
         val request = ApiRepository()
         val gson = Gson()
-        detailPresenter = DetailPresenter(this, request, gson)
+        detailPreviousPresenter = DetailPreviousPresenter(this, request, gson)
 
-        detailPresenter.getDetailMatch("lookupevent.php", item)
+        detailPreviousPresenter.getDetailMatch("lookupevent.php", item)
+
     }
 
     override fun showLoading() {
@@ -39,13 +49,17 @@ class DetailPreviousActivity : AppCompatActivity(), DetailView {
 
     }
 
-    override fun showDetailMatch(data: ArrayList<NextItem>) {
+    override fun showDetailMatch(data: ArrayList<PreviousItem>) {
         activitydetailprevious_tv_date.text = data.first().dateEvent
         activitydetailprevious_tv_time.text = data.first().strTime
         activitydetailprevious_tv_homename.text = data.first().strHomeTeam
         activitydetailprevious_tv_awayname.text = data.first().strAwayTeam
         activitydetailprevious_tv_homescore.text = data.first().intHomeScore.toString()
         activitydetailprevious_tv_awayscore.text = data.first().intAwayScore.toString()
+
+        detailPreviousPresenter.getDetailTeamHome("lookupteam.php", data.first().idHomeTeam.toString())
+        detailPreviousPresenter.getDetailTeamAway("lookupteam.php", data.first().idAwayTeam.toString())
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -54,4 +68,13 @@ class DetailPreviousActivity : AppCompatActivity(), DetailView {
         }
         return true
     }
+
+    override fun showDetailTeamHome(data: ArrayList<TeamsItem>) {
+        Picasso.get().load(data.first().strTeamBadge).into(activitydetailprevious_iv_homethumb);
+    }
+
+    override fun showDetailTeamAway(data: ArrayList<TeamsItem>) {
+        Picasso.get().load(data.first().strTeamBadge).into(activitydetailprevious_iv_awaythumb);
+    }
+
 }

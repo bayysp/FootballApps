@@ -1,8 +1,9 @@
-package com.example.kadesubmisidua.model
+package com.example.kadesubmisidua.model.previousmatch
 
 import com.google.gson.annotations.SerializedName
 
-data class NextItem(
+
+data class PreviousItem(
 
 	@field:SerializedName("intHomeShots")
 	val intHomeShots: Any? = null,
@@ -17,13 +18,13 @@ data class NextItem(
 	val strAwayLineupSubstitutes: Any? = null,
 
 	@field:SerializedName("strTweet1")
-	val strTweet1: Any? = null,
+	val strTweet1: String? = null,
 
 	@field:SerializedName("strTweet2")
-	val strTweet2: Any? = null,
+	val strTweet2: String? = null,
 
 	@field:SerializedName("strTweet3")
-	val strTweet3: Any? = null,
+	val strTweet3: String? = null,
 
 	@field:SerializedName("idLeague")
 	val idLeague: String? = null,
@@ -41,7 +42,7 @@ data class NextItem(
 	val strHomeGoalDetails: Any? = null,
 
 	@field:SerializedName("strVideo")
-	val strVideo: Any? = null,
+	val strVideo: String? = null,
 
 	@field:SerializedName("strAwayLineupGoalkeeper")
 	val strAwayLineupGoalkeeper: Any? = null,
@@ -98,13 +99,13 @@ data class NextItem(
 	val strFanart: Any? = null,
 
 	@field:SerializedName("strDescriptionEN")
-	val strDescriptionEN: Any? = null,
+	val strDescriptionEN: String? = null,
 
 	@field:SerializedName("dateEventLocal")
 	val dateEventLocal: String? = null,
 
 	@field:SerializedName("strResult")
-	val strResult: Any? = null,
+	val strResult: String? = null,
 
 	@field:SerializedName("strCircuit")
 	val strCircuit: Any? = null,
@@ -164,7 +165,7 @@ data class NextItem(
 	val strHomeTeam: String? = null,
 
 	@field:SerializedName("strThumb")
-	val strThumb: Any? = null,
+	val strThumb: String? = null,
 
 	@field:SerializedName("strLeague")
 	val strLeague: String? = null,

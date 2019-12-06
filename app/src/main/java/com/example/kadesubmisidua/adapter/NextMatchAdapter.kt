@@ -3,10 +3,9 @@ package com.example.kadesubmisidua.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.model.NextItem
+import com.example.kadesubmisidua.model.nextmatch.NextItem
 import kotlinx.android.synthetic.main.item_nextmatch.view.*
 
 class NextMatchAdapter(
@@ -17,7 +16,7 @@ class NextMatchAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItem(nextItem: NextItem,listener: (NextItem) -> Unit){
+        fun bindItem(nextItem: NextItem, listener: (NextItem) -> Unit){
             itemView.item_nextmatch_tv_homename.text = nextItem.strHomeTeam
             itemView.item_nextmatch_tv_awayname.text = nextItem.strAwayTeam
             itemView.setOnClickListener { listener(nextItem) }

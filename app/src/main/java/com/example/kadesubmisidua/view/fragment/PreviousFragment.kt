@@ -17,7 +17,7 @@ import com.example.kadesubmisidua.R.array.id_league
 import com.example.kadesubmisidua.R.array.league
 import com.example.kadesubmisidua.adapter.PreviousMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
-import com.example.kadesubmisidua.model.PreviousItem
+import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.PreviousMatchView
@@ -36,8 +36,6 @@ class PreviousFragment : Fragment(), PreviousMatchView {
     private lateinit var progressBar: ProgressBar
     private lateinit var rvPreviousMatch: RecyclerView
 
-    private var idLeagueIndex : Int = 0
-//    private lateinit var idLeague : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

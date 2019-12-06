@@ -1,9 +1,9 @@
-package com.example.kadesubmisidua.model
+package com.example.kadesubmisidua.model.searchmatch
 
 import com.google.gson.annotations.SerializedName
 
 
-data class PreviousItem(
+data class SearchItem(
 
 	@field:SerializedName("intHomeShots")
 	val intHomeShots: Any? = null,
@@ -18,13 +18,13 @@ data class PreviousItem(
 	val strAwayLineupSubstitutes: Any? = null,
 
 	@field:SerializedName("strTweet1")
-	val strTweet1: String? = null,
+	val strTweet1: Any? = null,
 
 	@field:SerializedName("strTweet2")
-	val strTweet2: String? = null,
+	val strTweet2: Any? = null,
 
 	@field:SerializedName("strTweet3")
-	val strTweet3: String? = null,
+	val strTweet3: Any? = null,
 
 	@field:SerializedName("idLeague")
 	val idLeague: String? = null,
@@ -42,7 +42,7 @@ data class PreviousItem(
 	val strHomeGoalDetails: Any? = null,
 
 	@field:SerializedName("strVideo")
-	val strVideo: String? = null,
+	val strVideo: Any? = null,
 
 	@field:SerializedName("strAwayLineupGoalkeeper")
 	val strAwayLineupGoalkeeper: Any? = null,
@@ -63,7 +63,7 @@ data class PreviousItem(
 	val idHomeTeam: String? = null,
 
 	@field:SerializedName("intHomeScore")
-	val intHomeScore: String? = null,
+	val intHomeScore: Any? = null,
 
 	@field:SerializedName("dateEvent")
 	val dateEvent: String? = null,
@@ -99,13 +99,13 @@ data class PreviousItem(
 	val strFanart: Any? = null,
 
 	@field:SerializedName("strDescriptionEN")
-	val strDescriptionEN: String? = null,
+	val strDescriptionEN: Any? = null,
 
 	@field:SerializedName("dateEventLocal")
-	val dateEventLocal: String? = null,
+	val dateEventLocal: Any? = null,
 
 	@field:SerializedName("strResult")
-	val strResult: String? = null,
+	val strResult: Any? = null,
 
 	@field:SerializedName("strCircuit")
 	val strCircuit: Any? = null,
@@ -126,7 +126,7 @@ data class PreviousItem(
 	val strAwayLineupForward: Any? = null,
 
 	@field:SerializedName("strTimeLocal")
-	val strTimeLocal: String? = null,
+	val strTimeLocal: Any? = null,
 
 	@field:SerializedName("strLocked")
 	val strLocked: String? = null,
@@ -165,13 +165,13 @@ data class PreviousItem(
 	val strHomeTeam: String? = null,
 
 	@field:SerializedName("strThumb")
-	val strThumb: String? = null,
+	val strThumb: Any? = null,
 
 	@field:SerializedName("strLeague")
 	val strLeague: String? = null,
 
 	@field:SerializedName("intAwayScore")
-	val intAwayScore: String? = null,
+	val intAwayScore: Any? = null,
 
 	@field:SerializedName("strCity")
 	val strCity: Any? = null,

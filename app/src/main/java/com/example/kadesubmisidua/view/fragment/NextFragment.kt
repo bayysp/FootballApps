@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.NextMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
-import com.example.kadesubmisidua.model.NextItem
+import com.example.kadesubmisidua.model.nextmatch.NextItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.NextMatchView

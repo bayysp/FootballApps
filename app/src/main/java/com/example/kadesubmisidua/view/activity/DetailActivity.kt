@@ -5,16 +5,25 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.api.ApiRepository
-import com.example.kadesubmisidua.model.NextItem
+import com.example.kadesubmisidua.model.nextmatch.NextItem
+import com.example.kadesubmisidua.model.team.TeamsItem
 import com.example.kadesubmisidua.view._interface.DetailView
 import com.example.kadesubmisidua.view.presenter.DetailPresenter
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.item_nextmatch.*
 
 class DetailActivity : AppCompatActivity(), DetailView {
 
-    private lateinit var nextItem : NextItem
-    private lateinit var detailPresenter : DetailPresenter
+    private lateinit var nextItem: NextItem
+    private lateinit var detailPresenter: DetailPresenter
+
+    private var idTeamHome: String? = ""
+    private var idTeamAway: String? = ""
+
+    private var teamHomeBadge : String? = ""
+    private var teamAwayBadge : String? = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +37,10 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
         val request = ApiRepository()
         val gson = Gson()
-        detailPresenter = DetailPresenter(this,request,gson)
+        detailPresenter = DetailPresenter(this, request, gson)
 
-        detailPresenter.getDetailMatch("lookupevent.php",item)
+        detailPresenter.getDetailMatch("lookupevent.php", item)
+
 
     }
 
@@ -47,6 +57,18 @@ class DetailActivity : AppCompatActivity(), DetailView {
         activitydetail_tv_time.text = data.first().strTime
         activitydetail_tv_homename.text = data.first().strHomeTeam
         activitydetail_tv_awayname.text = data.first().strAwayTeam
+
+        detailPresenter.getDetailTeamHome("lookupteam.php", data.first().idHomeTeam.toString())
+        detailPresenter.getDetailTeamAway("lookupteam.php", data.first().idAwayTeam.toString())
+    }
+
+    override fun showDetailTeamHome(data: ArrayList<TeamsItem>) {
+
+        Picasso.get().load(data.first().strTeamBadge).into(activitydetail_iv_homethumb)
+    }
+
+    override fun showDetailTeamAway(data: ArrayList<TeamsItem>) {
+        Picasso.get().load(data.first().strTeamBadge).into(activitydetail_iv_awaythumb)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -55,4 +77,5 @@ class DetailActivity : AppCompatActivity(), DetailView {
         }
         return true
     }
+
 }
