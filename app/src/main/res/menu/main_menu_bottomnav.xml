@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/main_menu_league"
+        android:title="@string/league"
+        android:icon="@drawable/league"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/main_menu_favorite"
+        android:title="@string/favorite_match"
+        android:icon="@drawable/favorite"
+        app:showAsAction="ifRoom"/>
+</menu>

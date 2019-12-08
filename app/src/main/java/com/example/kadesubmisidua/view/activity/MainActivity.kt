@@ -6,48 +6,47 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.R.array.*
 import com.example.kadesubmisidua.adapter.LeagueAdapter
 import com.example.kadesubmisidua.model.league.LeagueItem
+import com.example.kadesubmisidua.view.fragment.FavoriteFragment
+import com.example.kadesubmisidua.view.fragment.LeagueFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var leagueAdapter : LeagueAdapter
-    private var leagueItems : ArrayList<LeagueItem> = arrayListOf()
+
+    private var selectedFragment : Fragment = LeagueFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initData()
+        loadFragment(selectedFragment)
 
-        activitymain_rv.layoutManager = LinearLayoutManager(this)
-        activitymain_rv.adapter = LeagueAdapter(applicationContext,leagueItems)
+        activitymain_bnv.setOnNavigationItemSelectedListener(this)
+
 
     }
 
-    private fun initData() {
-        val leagueTitle = resources.getStringArray(league)
-        val leagueThumb = resources.obtainTypedArray(club_image)
-        val leagueId = resources.getStringArray(id_league)
 
-        leagueItems.clear()
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.main_menu_league -> {
+                selectedFragment = LeagueFragment()
+            }
 
-        for (i in leagueTitle.indices){
-            leagueItems.add(
-                LeagueItem(
-                    leagueTitle[i],
-                    leagueThumb.getResourceId(i,0),
-                    leagueId[i]
-                )
-            )
+            R.id.main_menu_favorite -> {
+                selectedFragment = FavoriteFragment()
+            }
         }
 
-        leagueThumb.recycle()
+        return loadFragment(selectedFragment)
     }
 
 
@@ -65,4 +64,20 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+    private fun loadFragment(selectedFragment: Fragment): Boolean {
+        if (selectedFragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.activitymain_container, selectedFragment)
+                .addToBackStack(null)
+                .commit()
+            Log.d("MainActivityOptions", "selectedFragment is : " + selectedFragment);
+
+
+            return true
+        }
+        return false
+    }
+
 }

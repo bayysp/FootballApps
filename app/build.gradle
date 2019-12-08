@@ -38,7 +38,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
     implementation 'com.squareup.picasso:picasso:2.71828'
-//    implementation 'com.squareup.retrofit:retrofit:2.0.0-beta2'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha02'
@@ -59,5 +58,8 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'androidx.fragment:fragment-ktx:1.2.0-rc03'
     implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+    //sqlite for internal database
+    implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
 
 }

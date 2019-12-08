@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_league.view.*
 
 class LeagueAdapter(
-    val context : Context,
+    val context : Context?,
     val listLeague :  ArrayList<LeagueItem> = arrayListOf()
 ) :
     RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
@@ -40,7 +40,7 @@ class LeagueAdapter(
             val intent = Intent(context,DetailLeagueActivity::class.java)
             intent.putExtra("id_league",listLeague.get(position).leagueId)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(intent)
+            context?.startActivity(intent)
         }
 
         holder.itemView.item_league_btn_showmatch.setOnClickListener {
@@ -48,7 +48,7 @@ class LeagueAdapter(
             intent.putExtra("id_league",listLeague.get(position).leagueId)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-            context.startActivity(intent)
+            context?.startActivity(intent)
         }
     }
 }
