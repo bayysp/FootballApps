@@ -12,18 +12,10 @@ import com.example.kadesubmisidua.view.presenter.DetailPresenter
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.item_nextmatch.*
 
 class DetailActivity : AppCompatActivity(), DetailView {
 
-    private lateinit var nextItem: NextItem
     private lateinit var detailPresenter: DetailPresenter
-
-    private var idTeamHome: String? = ""
-    private var idTeamAway: String? = ""
-
-    private var teamHomeBadge : String? = ""
-    private var teamAwayBadge : String? = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

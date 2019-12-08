@@ -44,14 +44,15 @@ class SearchActivity : AppCompatActivity(), com.example.kadesubmisidua.view._int
         val gson = Gson()
         searchPresenter = SearchPresenter(this,request,gson)
 
-        searchAdapter = SearchAdapter(searchItem){
+        searchAdapter = SearchAdapter(applicationContext,searchItem){
             Toast.makeText(applicationContext,"Clicked", Toast.LENGTH_SHORT).show()
         }
 
         searchactivity_rv.layoutManager = LinearLayoutManager(applicationContext)
         searchactivity_rv.adapter = searchAdapter
 
-        searchPresenter.getSearchMatchList("searchevents.php","")
+        //detail search item is liverpool ehehehe
+        searchPresenter.getSearchMatchList("searchevents.php","liverpool")
     }
 
 

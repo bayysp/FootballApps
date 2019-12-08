@@ -29,15 +29,13 @@ import kotlinx.android.synthetic.main.fragment_next.*
 /**
  * A simple [Fragment] subclass.
  */
-class NextFragment : Fragment() , NextMatchView {
+class NextFragment(private val idLeague : String) : Fragment() , NextMatchView {
 
     private var nextMatchItem : MutableList<NextItem> = mutableListOf()
     private lateinit var nextMatchPresenter : NextMatchPresenter
     private lateinit var nextMatchAdapter : NextMatchAdapter
 
     private lateinit var progressBar : ProgressBar
-    private lateinit var rvNextMatch : RecyclerView
-    private lateinit var items : NextItem
 
 
     override fun onCreateView(
@@ -66,31 +64,31 @@ class NextFragment : Fragment() , NextMatchView {
         fragmentnext_rv_nextmatch.layoutManager = LinearLayoutManager(context)
         fragmentnext_rv_nextmatch.adapter = nextMatchAdapter
 
-        nextMatchPresenter.getNextMatchList("eventsnextleague.php","4387")
+        nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague)
 
-        val spinnerItems = resources.getStringArray(R.array.league)
-        val idLeague = resources.getStringArray(R.array.id_league)
-        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
-        fragmentnext_sp.adapter = spinnerAdapter
-
-        fragmentnext_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-                Log.d("PreviousFragment","get league position: "+position)
-                Log.d("PreviousFragment","get league id: "+idLeague[position])
-                nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague[position].toString())
-            }
-
-        }
+//        val spinnerItems = resources.getStringArray(R.array.league)
+//        val idLeague = resources.getStringArray(R.array.id_league)
+//        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
+//        fragmentnext_sp.adapter = spinnerAdapter
+//
+//        fragmentnext_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//
+//                Log.d("PreviousFragment","get league position: "+position)
+//                Log.d("PreviousFragment","get league id: "+idLeague[position])
+//                nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague[position].toString())
+//            }
+//
+//        }
 
     }
 

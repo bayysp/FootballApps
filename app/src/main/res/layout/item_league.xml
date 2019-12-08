@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:orientation="vertical"
+    android:layout_margin="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_league_ivleague"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_spanish_la_liga"
+            android:layout_margin="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_league_tv_leaguetitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Spanish La Liga"
+                android:textSize="24sp"
+                android:textStyle="italic"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/item_league_btn_detailleague"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_league"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/item_league_btn_showmatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="show Match"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

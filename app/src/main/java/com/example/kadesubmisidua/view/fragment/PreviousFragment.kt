@@ -26,7 +26,8 @@ import com.example.kadesubmisidua.view.presenter.PreviousMatchPresenter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_previous.*
 
-class PreviousFragment : Fragment(), PreviousMatchView {
+class PreviousFragment(private val idLeague : String) : Fragment(), PreviousMatchView {
+
 
     private var previousMatchItem: MutableList<PreviousItem> = mutableListOf()
 
@@ -34,7 +35,7 @@ class PreviousFragment : Fragment(), PreviousMatchView {
     private lateinit var previousMatchAdapter: PreviousMatchAdapter
 
     private lateinit var progressBar: ProgressBar
-    private lateinit var rvPreviousMatch: RecyclerView
+//    private lateinit var idLeague : String
 
 
     override fun onCreateView(
@@ -42,16 +43,24 @@ class PreviousFragment : Fragment(), PreviousMatchView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+//        idLeague = arguments?.getString("id_league").toString()
+
         return inflater.inflate(R.layout.fragment_previous, container, false)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        println(idLeague)
         progressBar = view.findViewById(R.id.fragmentprevious_pb)
 
         val request = ApiRepository()
         val gson = Gson()
+
+
+
 
         previousMatchPresenter = PreviousMatchPresenter(this,request,gson)
 
@@ -64,31 +73,31 @@ class PreviousFragment : Fragment(), PreviousMatchView {
         fragmentprevious_rv_previousmatch.layoutManager = LinearLayoutManager(context)
         fragmentprevious_rv_previousmatch.adapter = previousMatchAdapter
 
-        previousMatchPresenter.getPreviousMatchList("eventspastleague.php","4328")
+        previousMatchPresenter.getPreviousMatchList("eventspastleague.php",idLeague)
 
-        val spinnerItems = resources.getStringArray(league)
-        val idLeague = resources.getStringArray(id_league)
-        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
-        fragmentprevious_sp.adapter = spinnerAdapter
-
-        fragmentprevious_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-                Log.d("PreviousFragment","get league position: "+position)
-                Log.d("PreviousFragment","get league id: "+idLeague[position])
-                previousMatchPresenter.getPreviousMatchList("eventspastleague.php",idLeague[position].toString())
-            }
-
-        }
+//        val spinnerItems = resources.getStringArray(league)
+//        val idLeague = resources.getStringArray(id_league)
+//        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
+//        fragmentprevious_sp.adapter = spinnerAdapter
+//
+//        fragmentprevious_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//
+//                Log.d("PreviousFragment","get league position: "+position)
+//                Log.d("PreviousFragment","get league id: "+idLeague[position])
+//                previousMatchPresenter.getPreviousMatchList("eventspastleague.php",idLeague[position].toString())
+//            }
+//
+//        }
 
     }
 

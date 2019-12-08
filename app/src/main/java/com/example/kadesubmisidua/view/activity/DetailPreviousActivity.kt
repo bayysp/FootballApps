@@ -54,11 +54,38 @@ class DetailPreviousActivity : AppCompatActivity(), DetailPreviousView {
         activitydetailprevious_tv_time.text = data.first().strTime
         activitydetailprevious_tv_homename.text = data.first().strHomeTeam
         activitydetailprevious_tv_awayname.text = data.first().strAwayTeam
-        activitydetailprevious_tv_homescore.text = data.first().intHomeScore.toString()
-        activitydetailprevious_tv_awayscore.text = data.first().intAwayScore.toString()
 
-        detailPreviousPresenter.getDetailTeamHome("lookupteam.php", data.first().idHomeTeam.toString())
-        detailPreviousPresenter.getDetailTeamAway("lookupteam.php", data.first().idAwayTeam.toString())
+        if (data.first().intAwayScore != null && data.first().intHomeScore != null) {
+            activitydetailprevious_tv_homescore.text = data.first().intHomeScore.toString()
+            activitydetailprevious_tv_awayscore.text = data.first().intAwayScore.toString()
+
+            activitydetailprevious_tv_homegoals.text = data.first().strHomeGoalDetails.toString()
+            activitydetailprevious_tv_awaygoals.text = data.first().strAwayGoalDetails.toString()
+        }
+
+        if (data.first().strAwayYellowCards != null && data.first().strHomeYellowCards !== null
+            && data.first().strAwayRedCards != null && data.first().strHomeRedCards != null
+        ){
+            activitydetailprevious_tv_homeyellowcards.text = data.first().strHomeYellowCards.toString()
+            activitydetailprevious_tv_homeredcards.text = data.first().strHomeRedCards.toString()
+            activitydetailprevious_tv_awayyellowcards.text = data.first().strAwayYellowCards.toString()
+            activitydetailprevious_tv_homeyellowcards.text = data.first().strHomeYellowCards.toString()
+        }else{
+            activitydetailprevious_tv_homeyellowcards.text = "-"
+            activitydetailprevious_tv_homeredcards.text = "-"
+            activitydetailprevious_tv_awayyellowcards.text = "-"
+            activitydetailprevious_tv_homeyellowcards.text = "-"
+        }
+
+
+        detailPreviousPresenter.getDetailTeamHome(
+            "lookupteam.php",
+            data.first().idHomeTeam.toString()
+        )
+        detailPreviousPresenter.getDetailTeamAway(
+            "lookupteam.php",
+            data.first().idAwayTeam.toString()
+        )
 
     }
 
