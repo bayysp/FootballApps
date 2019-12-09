@@ -177,4 +177,12 @@ data class NextItem(
 
 	@field:SerializedName("strPoster")
 	val strPoster: Any? = null
-)
+
+){
+	companion object{
+		const val TABLE_FAVORITE: String = "favorite_db"
+		const val ID: String = "ID_"
+		const val EVENT_ID: String = "EVENT_ID"
+		const val EVENT_CATEGORY: String = "EVENT_CATEGORY"
+	}
+}
