@@ -1,4 +1,4 @@
-package com.example.kadesubmisidua.adapter
+package com.example.kadesubmisidua.adapter.recycleradapter
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,7 @@ class LeagueAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_league,parent,false)
         return ViewHolder(view)
     }
@@ -32,7 +32,7 @@ class LeagueAdapter(
         return listLeague.size
     }
 
-    override fun onBindViewHolder(holder: LeagueAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.item_league_tv_leaguetitle.text = listLeague.get(position).leagueTitle
         Picasso.get().load(listLeague.get(position).leagueThumb).into(holder.itemView.item_league_ivleague)
 

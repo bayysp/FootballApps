@@ -13,7 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.adapter.SearchAdapter
+import com.example.kadesubmisidua.adapter.recycleradapter.SearchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.searchmatch.SearchItem
 import com.example.kadesubmisidua.util.invisible
@@ -44,8 +44,11 @@ class SearchActivity : AppCompatActivity(), com.example.kadesubmisidua.view._int
         val gson = Gson()
         searchPresenter = SearchPresenter(this,request,gson)
 
-        searchAdapter = SearchAdapter(applicationContext,searchItem){
-            Toast.makeText(applicationContext,"Clicked", Toast.LENGTH_SHORT).show()
+        searchAdapter = SearchAdapter(
+            applicationContext,
+            searchItem
+        ) {
+            Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
         }
 
         searchactivity_rv.layoutManager = LinearLayoutManager(applicationContext)

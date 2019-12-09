@@ -2,20 +2,14 @@ package com.example.kadesubmisidua.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.R.array.id_league
-import com.example.kadesubmisidua.R.array.league
-import com.example.kadesubmisidua.adapter.PreviousMatchAdapter
+import com.example.kadesubmisidua.adapter.recycleradapter.PreviousMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 import com.example.kadesubmisidua.util.invisible
@@ -44,10 +38,7 @@ class PreviousFragment(private val idLeague : String) : Fragment(), PreviousMatc
     ): View? {
         // Inflate the layout for this fragment
 
-//        idLeague = arguments?.getString("id_league").toString()
-
         return inflater.inflate(R.layout.fragment_previous, container, false)
-
 
     }
 
@@ -64,40 +55,20 @@ class PreviousFragment(private val idLeague : String) : Fragment(), PreviousMatc
 
         previousMatchPresenter = PreviousMatchPresenter(this,request,gson)
 
-        previousMatchAdapter = PreviousMatchAdapter(previousMatchItem){
-            val intent = Intent(context, DetailPreviousActivity::class.java)
-            intent.putExtra("id_event",it.idEvent)
-            startActivity(intent)
-        }
+        previousMatchAdapter =
+            PreviousMatchAdapter(
+                previousMatchItem
+            ) {
+                val intent = Intent(context, DetailPreviousActivity::class.java)
+                intent.putExtra("id_event", it.idEvent)
+                startActivity(intent)
+            }
 
         fragmentprevious_rv_previousmatch.layoutManager = LinearLayoutManager(context)
         fragmentprevious_rv_previousmatch.adapter = previousMatchAdapter
 
         previousMatchPresenter.getPreviousMatchList("eventspastleague.php",idLeague)
 
-//        val spinnerItems = resources.getStringArray(league)
-//        val idLeague = resources.getStringArray(id_league)
-//        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
-//        fragmentprevious_sp.adapter = spinnerAdapter
-//
-//        fragmentprevious_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//
-//                Log.d("PreviousFragment","get league position: "+position)
-//                Log.d("PreviousFragment","get league id: "+idLeague[position])
-//                previousMatchPresenter.getPreviousMatchList("eventspastleague.php",idLeague[position].toString())
-//            }
-//
-//        }
 
     }
 

@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.adapter.PagerMatchAdapter
-import com.example.kadesubmisidua.view.fragment.PreviousFragment
+import com.example.kadesubmisidua.adapter.pageradapter.PagerMatchAdapter
 import kotlinx.android.synthetic.main.activity_match.*
 
 class MatchActivity : AppCompatActivity() {
@@ -19,7 +18,11 @@ class MatchActivity : AppCompatActivity() {
 
         val idLeague = intent.getStringExtra("id_league")
 
-        activitymatch_vp.adapter = PagerMatchAdapter(supportFragmentManager,idLeague)
+        activitymatch_vp.adapter =
+            PagerMatchAdapter(
+                supportFragmentManager,
+                idLeague
+            )
         activitymatch_tl.setupWithViewPager(activitymatch_vp)
 
     }

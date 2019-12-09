@@ -1,4 +1,4 @@
-package com.example.kadesubmisidua.adapter
+package com.example.kadesubmisidua.adapter.recycleradapter
 
 import android.content.Context
 import android.content.Intent
@@ -37,7 +37,7 @@ class SearchAdapter(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_nextmatch, parent, false)
         return ViewHolder(view)
@@ -53,7 +53,7 @@ class SearchAdapter(
         return count
     }
 
-    override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(searchMatch[position], listener)
         holder.itemView.item_nextmatch_cv.setOnClickListener {
             val intent = Intent(context,DetailPreviousActivity::class.java)

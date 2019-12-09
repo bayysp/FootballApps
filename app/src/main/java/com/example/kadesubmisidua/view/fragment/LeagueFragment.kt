@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.adapter.LeagueAdapter
+import com.example.kadesubmisidua.adapter.recycleradapter.LeagueAdapter
 import com.example.kadesubmisidua.model.league.LeagueItem
 import kotlinx.android.synthetic.main.fragment_league.*
 
@@ -35,7 +35,8 @@ class LeagueFragment : Fragment() {
         initData()
 
         fragmentleague_rv.layoutManager = LinearLayoutManager(context)
-        fragmentleague_rv.adapter = LeagueAdapter(context, leagueItems)
+        fragmentleague_rv.adapter =
+            LeagueAdapter(context, leagueItems)
     }
 
     private fun initData() {

@@ -1,4 +1,4 @@
-package com.example.kadesubmisidua.adapter
+package com.example.kadesubmisidua.adapter.recycleradapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +30,7 @@ class PreviousMatchAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PreviousMatchAdapter.ViewHolder {
+    ): ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_previousmatch, parent, false)
         return ViewHolder(view)
@@ -40,7 +40,7 @@ class PreviousMatchAdapter(
         return listPreviousMatch.size
     }
 
-    override fun onBindViewHolder(holder: PreviousMatchAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(listPreviousMatch[position], listener)
     }
 }

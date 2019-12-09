@@ -1,18 +1,16 @@
-package com.example.kadesubmisidua.adapter
+package com.example.kadesubmisidua.adapter.pageradapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.kadesubmisidua.view.fragment.NextFragment
-import com.example.kadesubmisidua.view.fragment.PreviousFragment
+import com.example.kadesubmisidua.view.fragment.FavoriteNextFragment
+import com.example.kadesubmisidua.view.fragment.FavoritePreviousFragment
 
-class PagerMatchAdapter(fragmentManager : FragmentManager,idLeague : String) : FragmentPagerAdapter(fragmentManager){
-
-
+class PagerFavoriteAdapter(fragmentManager : FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     private val pages = listOf(
-        PreviousFragment(idLeague),
-        NextFragment(idLeague)
+        FavoritePreviousFragment(),
+        FavoriteNextFragment()
     )
 
     override fun getItem(position: Int): Fragment {

@@ -3,19 +3,15 @@ package com.example.kadesubmisidua.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.adapter.NextMatchAdapter
+import com.example.kadesubmisidua.adapter.recycleradapter.NextMatchAdapter
 import com.example.kadesubmisidua.api.ApiRepository
 import com.example.kadesubmisidua.model.nextmatch.NextItem
 import com.example.kadesubmisidua.util.invisible
@@ -55,40 +51,17 @@ class NextFragment(private val idLeague : String) : Fragment() , NextMatchView {
         val gson = Gson()
         nextMatchPresenter = NextMatchPresenter(this,request,gson)
 
-        nextMatchAdapter = NextMatchAdapter(nextMatchItem){
-            val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra("id_event",it.idEvent)
-            startActivity(intent)
-        }
+        nextMatchAdapter =
+            NextMatchAdapter(nextMatchItem) {
+                val intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra("id_event", it.idEvent)
+                startActivity(intent)
+            }
 
         fragmentnext_rv_nextmatch.layoutManager = LinearLayoutManager(context)
         fragmentnext_rv_nextmatch.adapter = nextMatchAdapter
 
         nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague)
-
-//        val spinnerItems = resources.getStringArray(R.array.league)
-//        val idLeague = resources.getStringArray(R.array.id_league)
-//        val spinnerAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item,spinnerItems)
-//        fragmentnext_sp.adapter = spinnerAdapter
-//
-//        fragmentnext_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//
-//                Log.d("PreviousFragment","get league position: "+position)
-//                Log.d("PreviousFragment","get league id: "+idLeague[position])
-//                nextMatchPresenter.getNextMatchList("eventsnextleague.php",idLeague[position].toString())
-//            }
-//
-//        }
 
     }
 

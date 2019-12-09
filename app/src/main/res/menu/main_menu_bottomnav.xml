@@ -11,6 +11,6 @@
     <item
         android:id="@+id/main_menu_favorite"
         android:title="@string/favorite_match"
-        android:icon="@drawable/favorite"
+        android:icon="@drawable/star"
         app:showAsAction="ifRoom"/>
 </menu>
