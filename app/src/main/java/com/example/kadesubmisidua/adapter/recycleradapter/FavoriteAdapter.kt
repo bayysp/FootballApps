@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.model.favorite.FavoriteMatch
-import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 import kotlinx.android.synthetic.main.item_favorite.view.*
 
 class FavoriteAdapter(

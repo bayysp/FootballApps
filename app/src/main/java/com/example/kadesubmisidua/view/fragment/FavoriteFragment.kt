@@ -2,17 +2,15 @@ package com.example.kadesubmisidua.view.fragment
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_favorite.*
-
+import androidx.fragment.app.Fragment
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.pageradapter.PagerFavoriteAdapter
 import com.example.kadesubmisidua.database.database
 import com.example.kadesubmisidua.model.favorite.FavoriteMatch
-import kotlinx.android.synthetic.main.activity_match.*
+import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select

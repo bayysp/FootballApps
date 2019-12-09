@@ -8,14 +8,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.kadesubmisidua.R
-import com.example.kadesubmisidua.database.database
-import com.example.kadesubmisidua.model.favorite.FavoriteMatch
 import com.example.kadesubmisidua.view.fragment.FavoriteFragment
 import com.example.kadesubmisidua.view.fragment.LeagueFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.select
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 

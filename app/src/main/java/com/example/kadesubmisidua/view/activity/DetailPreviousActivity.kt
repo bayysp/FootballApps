@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.api.ApiRepository
+import com.example.kadesubmisidua.database.database
+import com.example.kadesubmisidua.model.favorite.FavoriteMatch
 import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 import com.example.kadesubmisidua.model.team.TeamsItem
 import com.example.kadesubmisidua.view._interface.DetailPreviousView
@@ -16,11 +18,10 @@ import com.example.kadesubmisidua.view.presenter.DetailPreviousPresenter
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_previous.*
-import org.jetbrains.anko.db.*
-import com.example.kadesubmisidua.database.database
-import com.example.kadesubmisidua.model.favorite.FavoriteMatch
-import com.google.android.material.snackbar.Snackbar
-import org.jetbrains.anko.design.snackbar
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.delete
+import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
 
 class DetailPreviousActivity : AppCompatActivity(), DetailPreviousView {
 
