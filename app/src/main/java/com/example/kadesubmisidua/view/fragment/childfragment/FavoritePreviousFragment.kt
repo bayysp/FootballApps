@@ -1,6 +1,7 @@
 package com.example.kadesubmisidua.view.fragment.childfragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.recycleradapter.FavoriteAdapter
 import com.example.kadesubmisidua.model.favorite.FavoriteMatch
+import com.example.kadesubmisidua.view.activity.DetailPreviousActivity
 import kotlinx.android.synthetic.main.fragment_favorite_previous.view.*
 
 /**
@@ -33,6 +35,10 @@ class FavoritePreviousFragment(private val itemFavorite : ArrayList<FavoriteMatc
         super.onViewCreated(view, savedInstanceState)
 
         favoriteAdapter = FavoriteAdapter(itemFavorite){
+            val intent = Intent(context,DetailPreviousActivity::class.java)
+            intent.putExtra("id_event",it.eventId)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
             Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
         }
 

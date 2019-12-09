@@ -15,7 +15,9 @@ class PagerFavoriteAdapter(fragmentManager : FragmentManager,
         FavoritePreviousFragment(
             favoritePreviousMatch
         ),
-        FavoriteNextFragment()
+        FavoriteNextFragment(
+            favoriteNextMatch
+        )
     )
 
     override fun getItem(position: Int): Fragment {
