@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.kadesubmisidua.R
+import com.example.kadesubmisidua.model.previousmatch.PreviousItem
 
 /**
  * A simple [Fragment] subclass.
  */
 class FavoritePreviousFragment : Fragment() {
+
+    private var previousMatchItem : MutableList<PreviousItem> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

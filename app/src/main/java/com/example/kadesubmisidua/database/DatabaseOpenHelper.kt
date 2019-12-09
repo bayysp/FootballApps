@@ -32,7 +32,9 @@ class DatabaseOpenHelper(context: Context) :
             true,
             FavoriteMatch.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
             FavoriteMatch.EVENT_ID to TEXT + UNIQUE,
-            FavoriteMatch.EVENT_CATEGORY to TEXT
+            FavoriteMatch.EVENT_CATEGORY to TEXT,
+            FavoriteMatch.EVENT_HOMETEAM to TEXT,
+            FavoriteMatch.EVENT_AWAYTEAM to TEXT
 
         )
     }

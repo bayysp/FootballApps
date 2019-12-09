@@ -20,4 +20,9 @@ object SportDBApi {
     fun getLeague(typeMatch: String? , idLeague : String?) : String {
         return BuildConfig.BASE_URL + "api/v1/json/${BuildConfig.TSDB_API_KEY}" + "/"+typeMatch+"?id="+idLeague
     }
+
+    //https://www.thesportsdb.com/api/v1/json/1/lookupevent.php?id=441613
+    fun getEvent(typeMatch: String?, idEvent : String?) : String{
+        return BuildConfig.BASE_URL + "api/v1/json/${BuildConfig.TSDB_API_KEY}" + "/"+typeMatch+"?id="+idEvent
+    }
 }

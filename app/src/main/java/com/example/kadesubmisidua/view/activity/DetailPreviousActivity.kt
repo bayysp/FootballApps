@@ -141,7 +141,9 @@ class DetailPreviousActivity : AppCompatActivity(), DetailPreviousView {
                 insert(
                     FavoriteMatch.TABLE_FAVORITE,
                     FavoriteMatch.EVENT_ID to previousItem.idEvent,
-                    FavoriteMatch.EVENT_CATEGORY to "previousitem"
+                    FavoriteMatch.EVENT_CATEGORY to "previousitem",
+                    FavoriteMatch.EVENT_HOMETEAM to previousItem.strHomeTeam,
+                    FavoriteMatch.EVENT_AWAYTEAM to previousItem.strAwayTeam
                 )
                 Toast.makeText(applicationContext,"Added to FavoriteMatch Database",Toast.LENGTH_SHORT).show()
             }

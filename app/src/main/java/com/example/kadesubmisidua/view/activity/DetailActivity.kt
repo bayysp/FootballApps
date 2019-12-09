@@ -118,7 +118,9 @@ class DetailActivity : AppCompatActivity(), DetailView {
                 insert(
                     FavoriteMatch.TABLE_FAVORITE,
                     FavoriteMatch.EVENT_ID to nextItem.idEvent,
-                    FavoriteMatch.EVENT_CATEGORY to "nextitem"
+                    FavoriteMatch.EVENT_CATEGORY to "nextitem",
+                    FavoriteMatch.EVENT_HOMETEAM to nextItem.strHomeTeam,
+                    FavoriteMatch.EVENT_AWAYTEAM to nextItem.strAwayTeam
                 )
                 Toast.makeText(applicationContext,"Added to FavoriteMatch Database", Toast.LENGTH_SHORT).show()
             }
