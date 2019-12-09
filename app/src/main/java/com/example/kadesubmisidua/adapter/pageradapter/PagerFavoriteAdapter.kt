@@ -3,13 +3,18 @@ package com.example.kadesubmisidua.adapter.pageradapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.kadesubmisidua.view.fragment.FavoriteNextFragment
-import com.example.kadesubmisidua.view.fragment.FavoritePreviousFragment
+import com.example.kadesubmisidua.model.favorite.FavoriteMatch
+import com.example.kadesubmisidua.view.fragment.childfragment.FavoriteNextFragment
+import com.example.kadesubmisidua.view.fragment.childfragment.FavoritePreviousFragment
 
-class PagerFavoriteAdapter(fragmentManager : FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class PagerFavoriteAdapter(fragmentManager : FragmentManager,
+                           favoritePreviousMatch : ArrayList<FavoriteMatch>,
+                           favoriteNextMatch : ArrayList<FavoriteMatch>) : FragmentPagerAdapter(fragmentManager) {
 
     private val pages = listOf(
-        FavoritePreviousFragment(),
+        FavoritePreviousFragment(
+            favoritePreviousMatch
+        ),
         FavoriteNextFragment()
     )
 
