@@ -44,6 +44,18 @@ class FavoriteFragment : Fragment() {
         view.fragmentfavorite_tl.setupWithViewPager(fragmentfavorite_vp)
     }
 
+    override fun onResume() {
+        super.onResume()
+        fragmentfavorite_vp.adapter =
+            PagerFavoriteAdapter(
+                childFragmentManager,
+                showPreviousFavorite(),
+                showNextFavorite()
+            )
+
+        fragmentfavorite_tl.setupWithViewPager(fragmentfavorite_vp)
+    }
+
     //this function to get previous favorite
     private fun showPreviousFavorite() : ArrayList<FavoriteMatch> {
         favoritePreviousMatch.clear()
