@@ -1,36 +1,59 @@
 package com.example.kadesubmisidua.adapter.pageradapter
 
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.kadesubmisidua.view.fragment.ClassementFragment
 import com.example.kadesubmisidua.view.fragment.NextFragment
 import com.example.kadesubmisidua.view.fragment.PreviousFragment
+import java.lang.ref.WeakReference
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-class PagerMatchAdapter(fragmentManager : FragmentManager,idLeague : String) : FragmentPagerAdapter(fragmentManager){
+class PagerMatchAdapter(fragmentManager: FragmentManager, idLeague: String) :
+    FragmentPagerAdapter(fragmentManager) {
 
+    private val fragmentTags : MutableMap<Int, String>
+    private val fragmentList = ArrayList<Fragment>()
+    private var idLeague = ""
 
-
-    private val pages = listOf(
-        PreviousFragment(idLeague),
-        NextFragment(idLeague),
-        ClassementFragment()
-    )
+    init {
+        this.fragmentTags = HashMap()
+        this.idLeague = idLeague
+    }
 
     override fun getItem(position: Int): Fragment {
-        return pages[position]
+        return fragmentList[position]
     }
 
     override fun getCount(): Int {
-        return pages.size
+        return fragmentList.size
+    }
+
+    fun addFragment(fragment: Fragment){
+        fragmentList.add(fragment)
+    }
+
+    override fun instantiateItem(container: View, position: Int): Any {
+        val obj = super.instantiateItem(container, position)
+        if (obj is Fragment){
+            val tag = obj.tag
+            fragmentTags[position] = tag!!
+        }
+
+        return obj
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when(position){
+        return when (position) {
             0 -> "Previous Match"
             1 -> "Next Match"
             2 -> "Classement"
             else -> " "
         }
     }
+
+
 }
