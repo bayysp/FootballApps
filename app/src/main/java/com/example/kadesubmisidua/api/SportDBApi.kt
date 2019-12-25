@@ -30,4 +30,9 @@ object SportDBApi {
     fun getClassement(typeMatch : String?, idLeague: String?) : String{
         return BuildConfig.BASE_URL + "api/v1/json/${BuildConfig.TSDB_API_KEY}" + "/"+typeMatch+"?l="+idLeague
     }
+
+//    https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=4328
+    fun getAllTeam(typeMatch: String?, idLeague: String?) : String{
+    return BuildConfig.BASE_URL + "api/v1/json/${BuildConfig.TSDB_API_KEY}" + "/"+typeMatch+"?id="+idLeague
+    }
 }

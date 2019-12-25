@@ -9,6 +9,12 @@
         />
 
     <item
+        android:id="@+id/main_menu_team"
+        android:title="@string/teams"
+        android:icon="@drawable/team"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/main_menu_favorite"
         android:title="@string/favorite_match"
         android:icon="@drawable/star"
