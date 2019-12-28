@@ -14,9 +14,9 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_league.*
 
-class DetailLeagueActivity : AppCompatActivity() , DetailLeagueView {
+class DetailLeagueActivity : AppCompatActivity(), DetailLeagueView {
 
-    private lateinit var detailLeaguePresenter : DetailLeaguePresenter
+    private lateinit var detailLeaguePresenter: DetailLeaguePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +30,8 @@ class DetailLeagueActivity : AppCompatActivity() , DetailLeagueView {
 
         val idLeague = intent.getStringExtra("id_league")
 
-        detailLeaguePresenter =DetailLeaguePresenter(this,request,gson)
-        detailLeaguePresenter.getDetailLeague("lookupleague.php",idLeague)
+        detailLeaguePresenter = DetailLeaguePresenter(this, request, gson)
+        detailLeaguePresenter.getDetailLeague("lookupleague.php", idLeague)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -52,7 +52,8 @@ class DetailLeagueActivity : AppCompatActivity() , DetailLeagueView {
     override fun showDetailLeague(data: ArrayList<LeaguesItem>) {
         activitydetailleague_tv_leaguedesc.text = data.first().strDescriptionEN
         activitydetailleague_tv_leaguename.text = data.first().strLeague
-        Picasso.get().load(data.first().strBadge.toString()).into(activitydetailleague_iv_leaguethumb)
+        Picasso.get().load(data.first().strBadge.toString())
+            .into(activitydetailleague_iv_leaguethumb)
     }
 
 }

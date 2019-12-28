@@ -1,6 +1,7 @@
 package com.example.kadesubmisidua.view.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.example.kadesubmisidua.model.team.TeamsItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.TeamsView
+import com.example.kadesubmisidua.view.activity.DetailTeamActivity
 import com.example.kadesubmisidua.view.presenter.TeamsPresenter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_teams.*
@@ -52,6 +54,9 @@ class TeamsFragment : Fragment(), TeamsView {
         teamsPresenter = TeamsPresenter(this,request,gson)
         teamsAdapter = TeamsAdapter(teamsItem){
             Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
+            val intent = Intent(context,DetailTeamActivity::class.java)
+            intent.putExtra("id_team",it.idTeam)
+            startActivity(intent)
         }
 
         fragmentteams_rv.layoutManager = GridLayoutManager(context,3)
