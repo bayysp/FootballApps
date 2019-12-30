@@ -10,6 +10,7 @@ import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.pageradapter.PagerFavoriteAdapter
 import com.example.kadesubmisidua.database.database
 import com.example.kadesubmisidua.model.favorite.FavoriteMatch
+import com.example.kadesubmisidua.model.favorite.FavoriteTeam
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import org.jetbrains.anko.db.classParser
@@ -22,6 +23,7 @@ class FavoriteFragment : Fragment() {
 
     private var favoritePreviousMatch : ArrayList<FavoriteMatch> = arrayListOf()
     private var favoriteNextMatch : ArrayList<FavoriteMatch> = arrayListOf()
+    private var favoriteTeam : ArrayList<FavoriteTeam> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +40,8 @@ class FavoriteFragment : Fragment() {
             PagerFavoriteAdapter(
                 childFragmentManager,
                 showPreviousFavorite(),
-                showNextFavorite()
+                showNextFavorite(),
+                showTeamFavorite()
             )
 
         view.fragmentfavorite_tl.setupWithViewPager(fragmentfavorite_vp)
@@ -50,7 +53,8 @@ class FavoriteFragment : Fragment() {
             PagerFavoriteAdapter(
                 childFragmentManager,
                 showPreviousFavorite(),
-                showNextFavorite()
+                showNextFavorite(),
+                showTeamFavorite()
             )
 
         fragmentfavorite_tl.setupWithViewPager(fragmentfavorite_vp)
@@ -80,5 +84,15 @@ class FavoriteFragment : Fragment() {
         }
 
         return favoriteNextMatch
+    }
+
+    private fun showTeamFavorite() : ArrayList<FavoriteTeam>{
+        favoriteTeam.clear()
+        context?.database?.use {
+            val result = select(FavoriteTeam.TABLE_TEAM)
+            val favorite = result.parseList(classParser<FavoriteTeam>())
+            favoriteTeam.addAll(favorite)
+        }
+        return favoriteTeam
     }
 }

@@ -4,13 +4,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.kadesubmisidua.view.fragment.ClassementFragment
-import com.example.kadesubmisidua.view.fragment.NextFragment
-import com.example.kadesubmisidua.view.fragment.PreviousFragment
-import java.lang.ref.WeakReference
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class PagerMatchAdapter(fragmentManager: FragmentManager, idLeague: String) :
     FragmentPagerAdapter(fragmentManager) {
