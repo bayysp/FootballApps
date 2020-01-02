@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.view.fragment.FavoriteFragment
 import com.example.kadesubmisidua.view.fragment.LeagueFragment
-import com.example.kadesubmisidua.view.fragment.TeamsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,10 +37,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
             R.id.main_menu_favorite -> {
                 selectedFragment = FavoriteFragment()
-            }
-
-            R.id.main_menu_team -> {
-                selectedFragment = TeamsFragment()
             }
         }
 

@@ -1,18 +1,13 @@
-package com.example.kadesubmisidua.view.fragment
-
+package com.example.kadesubmisidua.view.activity
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.MenuItem
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.adapter.recycleradapter.TeamsAdapter
 import com.example.kadesubmisidua.api.ApiRepository
@@ -20,16 +15,12 @@ import com.example.kadesubmisidua.model.team.TeamsItem
 import com.example.kadesubmisidua.util.invisible
 import com.example.kadesubmisidua.util.visible
 import com.example.kadesubmisidua.view._interface.TeamsView
-import com.example.kadesubmisidua.view.activity.DetailTeamActivity
 import com.example.kadesubmisidua.view.presenter.TeamsPresenter
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_teams.*
 import kotlinx.android.synthetic.main.fragment_teams.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
-class TeamsFragment : Fragment(), TeamsView {
+class TeamsActivity : AppCompatActivity(), TeamsView {
 
     private lateinit var progressBar: ProgressBar
 
@@ -37,34 +28,41 @@ class TeamsFragment : Fragment(), TeamsView {
     private lateinit var teamsPresenter: TeamsPresenter
     private lateinit var teamsAdapter : TeamsAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teams, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_teams)
 
-        progressBar = view.findViewById(R.id.fragmentteams_pb)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        val idLeague = intent.getStringExtra("id_league")
+
+        progressBar = findViewById(R.id.activityteams_pb)
+
         val request = ApiRepository()
         val gson = Gson()
 
         teamsPresenter = TeamsPresenter(this,request,gson)
         teamsAdapter = TeamsAdapter(teamsItem){
-            Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show()
-            val intent = Intent(context,DetailTeamActivity::class.java)
+            Toast.makeText(applicationContext,"Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext,DetailTeamActivity::class.java)
             intent.putExtra("id_team",it.idTeam)
             startActivity(intent)
         }
 
-        fragmentteams_rv.layoutManager = GridLayoutManager(context,3) as RecyclerView.LayoutManager?
+        activityteams_rv.layoutManager = GridLayoutManager(applicationContext,3) as RecyclerView.LayoutManager?
 
-        fragmentteams_rv.adapter = teamsAdapter
+        activityteams_rv.adapter = teamsAdapter
 
-        teamsPresenter.getTeamsList("lookup_all_teams.php","4328")
+        teamsPresenter.getTeamsList("lookup_all_teams.php",idLeague)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> finish()
+        }
+        return true
     }
 
     override fun showLoading() {
@@ -80,6 +78,5 @@ class TeamsFragment : Fragment(), TeamsView {
         teamsItem.addAll(data)
         teamsAdapter.notifyDataSetChanged()
     }
-
 
 }

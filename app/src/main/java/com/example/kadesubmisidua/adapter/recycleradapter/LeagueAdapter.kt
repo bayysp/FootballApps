@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmisidua.R
 import com.example.kadesubmisidua.model.league.LeagueItem
 import com.example.kadesubmisidua.view.activity.DetailLeagueActivity
+import com.example.kadesubmisidua.view.activity.DetailTeamActivity
 import com.example.kadesubmisidua.view.activity.MatchActivity
+import com.example.kadesubmisidua.view.activity.TeamsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_league.view.*
 
@@ -45,6 +47,14 @@ class LeagueAdapter(
 
         holder.itemView.item_league_btn_showmatch.setOnClickListener {
             val intent = Intent(context,MatchActivity::class.java)
+            intent.putExtra("id_league",listLeague.get(position).leagueId)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            context?.startActivity(intent)
+        }
+
+        holder.itemView.item_league_btn_listteam.setOnClickListener {
+            val intent = Intent(context,TeamsActivity::class.java)
             intent.putExtra("id_league",listLeague.get(position).leagueId)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 

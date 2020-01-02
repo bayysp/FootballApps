@@ -48,4 +48,6 @@
     <string name="total">Total</string>
     <string name="teams">Teams</string>
     <string name="todo">TODO</string>
+    <string name="list_team">List Team</string>
+    <string name="show_match">show Match</string>
 </resources>
